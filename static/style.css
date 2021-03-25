@@ -1,0 +1,37 @@
+body {
+	margin-left: 40px;
+}
+h1 {
+	font-size: 2rem;
+}
+form {
+	margin-left: auto;
+}
+
+.success {
+	background-color: rgb(59 232 52);
+	color: black;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.edit {
+	background-color: rgb(72, 133, 212);
+	color: white;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.delete {
+	background-color: rgb(230, 47, 47);
+	color: white;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.cancel {
+	border: 1px solid rgb(92, 155, 214);
+	color: rgb(92, 155, 214);
+	padding: 5px;
+	border-radius: 5px;
+}
