@@ -4,7 +4,7 @@
 {% block content %}
     <div>
         {% if user.image_url %}
-        <img src="{{ user.image_url }}" alt="{{ user.full_name}}">
+        <img src="{{ user.image_url }}" alt="{{ user.first_name}} {{user.last_name}}">
         {% endif %}
     </div>
     <div>
@@ -17,6 +17,20 @@
               formmethod="POST" class="delete"> Delete
             </button>
         </form>
+
+        <h2>Posts </h2>
+        <ul>
+          {% for post in posts %}
+            <li>
+              <a href="/posts/{{post_id}}"> {{post.title}}</a>
+              <small>{{post.friendly_date}}</small>
+            </li>
+          {% endfor %}
+        </ul>
+
+        <p>
+          <button class="success"><a href="/users/{{user.id}}/posts/new "> Add Post</a></button>
+        </p>
     </div>
 
 {% endblock %}
