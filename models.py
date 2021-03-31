@@ -35,7 +35,7 @@ class User(db.Model):
 class Post(db.Model):
     __tablename__ = 'posts'
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable=False)
 
     title = db.Column(db.String, nullable=False)
 
@@ -49,3 +49,22 @@ class Post(db.Model):
     def friendly_date(self):
         """Format date"""
         return self.created_at.strftime("%a %b %-d  %Y, %-I:%M %p")
+
+
+class Tag(db.Model):
+
+    __tablename__ = 'tags'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+
+    name = db.Column(db.String, unique=True, nullable=False)
+
+    posts = db.relationship('Post', secondary='posts_tags', backref='tags')
+
+
+class PostTag(db.Model):
+
+    __tablename__ = 'posts_tags'
+
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), primary_key=True)
+    tag_id = db.Column(db.Integer, db.ForeignKey('tags.id'), primary_key=True)

@@ -7,9 +7,20 @@
     <form method="POST">
         <label for="title"> Title </label><br>
         <input type="text" name="title" id="title"> <br><br>
+
         <label for="content"> Content </label> <br>
         <textarea name="content" id="content" cols="30" rows="10"></textarea><br><br>
+
+        <div>
+            {% for tag in tags %}
+            <label for="tag_{{tag.id}}">{{ tag.name }}</label>
+            <input type="checkbox" name="tags" id="tag_{{tag.id}}" value="{{ tag.id }}">
+            {% endfor %}
+        </div>
+
         <button class="cancel"><a href="/users/{{user.id}}">Cancel</a></button>
+
         <button type="submit" class="success">Add post</button>
+
     </form>
 {% endblock %}

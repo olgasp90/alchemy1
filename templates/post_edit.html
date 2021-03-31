@@ -4,12 +4,26 @@
 
 {% block content %}
     <form action="/posts/{{post.id}}/edit" method="POST">
-    <label for="title"> Title </label><br>
-    <input type="text" name="title" id="title" value="{{post.title}}"><br><br>
-    <label for="content"> Post Content </label><br>
-    <textarea name="content" id="content" cols="30" rows="10">{{post.content}}</textarea><br><br>
-    <button class="cancel"> <a href="/"> Cancel</a></button>
-    <button type="submit" class="success"> Save</button>
+
+        <label for="title"> Title </label><br>
+        <input type="text" name="title" id="title" value="{{post.title}}"><br><br>
+
+        <label for="content"> Post Content </label><br>
+        <textarea name="content" id="content" cols="30" rows="10">{{post.content}}</textarea><br><br>
+
+        <div>
+            {% for tag in tags %}
+                <label for="tag_{{tag.id}}"> {{ tag.name }}</label>
+                <input type="checkbox" name="tags" id="tag_{{tag.id}}" value="{{ tag.id}}"
+                {% if tag in post.tags %} checked {% endif %} >
+            {% endfor %}
+        </div>
+
+
+        <button class="cancel"> <a href="/"> Cancel</a></button>
+
+        <button type="submit" class="success"> Save </button>
+
     </form>
 
 {% endblock %}
